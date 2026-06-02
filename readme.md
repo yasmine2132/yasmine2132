@@ -1,5 +1,5 @@
 
-PROJET WEB : SALON DE BEAUTÉ 
+PROJET WEB : SALON DE BEAUTÉ -YOUNIQUE-
 
 Module : Développement d'Applications Web (2025/2026)
 Université Mouloud MAMMERI de Tizi-Ouzou (UMMTO)
@@ -24,7 +24,7 @@ Instructions d'utilisation :
 3. Pour tester l'authentification simulée :
    - Allez sur la page "Connexion".
    - Utilisez le compte de test suivant : 
-     * Email : amel@gmail.com
-     * Mot de passe : 123456
+     * Email .
+     * Mot de passe .
    - Ou créez un nouveau compte via l'onglet "Inscription" (les données sont sauvées dans le navigateur).
 4. Pour le filtrage, allez sur la page "Prestations" et cliquez sur les boutons de catégories.
