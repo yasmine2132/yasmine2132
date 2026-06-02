@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Prestations - YOUNIQUE</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="../index.html" class="logo-text">-<i>YOUNIQUE</i>-</a>
+            
+        </div>
+        <nav>
+            <ul>
+                <li><a href="./index.html">Accueil</a></li>
+                <li><a href="./prestation.html" class="active">Prestations</a></li>
+                <li><a href="./reservation.html">Réservation</a></li>
+                <li><a href="./connexion.html" id="nav-auth">Connexion</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h2><b>Prestations & Tarifs</b></h2>
+        
+        <div class="filters">
+            <button class="btn-filter active" onclick="filtrerPrestations('tous')">Tout voir</button>
+            <button class="btn-filter" onclick="filtrerPrestations('coiffure')">Coiffure & Cheveux</button>
+            <button class="btn-filter" onclick="filtrerPrestations('soins')">Soins du Visage</button>
+            <button class="btn-filter" onclick="filtrerPrestations('onglerie')">Onglerie</button>
+        </div>
+
+        <div class="products-grid" id="prestations-container">
+            </div>
+    </main>
+
+    <footer>
+        <p>&copy; -<i> YOUNIQUE </i>-  Tous droits réservés.</p>
+    </footer>
+
+    <script src="./main.js"></script>
+    <script>
+        
+        window.onload = function() {
+            afficherPrestations('tous'); 
+            verifierSession('../');       
+        };
+        
+    </script>
+</body>
+</html>

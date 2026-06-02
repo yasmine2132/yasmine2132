@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>-YOUNIQUE- Salon de Coiffure & Esthétique</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html" class="logo-text">-<i>YOUNIQUE</i>-</a> 
+            
+        </div>
+        <nav>
+            <ul>
+                <li><a href="./index.html" class="active">Accueil</a></li>
+                <li><a href="./prestation.html">Prestations</a></li>
+                <li><a href="./reservation.html">Réservation</a></li>
+                <li><a href="./connexion.html" id="nav-auth">Connexion</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <div class="hero-text">
+                <h2>Révélez votre éclat naturel</h2>
+                <p><b>Bienvenue chez- <i> YOUNIQUE</i> - votre salon de coiffure et d'esthétique . Profitez d'un moment de détente .</b></p>
+                <a href="./prestation.html" class="btn">Découvrir nos services</a>
+            </div>
+        </section>
+        <p id="welcome-hero" style="font-weight: bold; color: var(--primary-color); margin-top: 10px;"></p>
+
+        <section class="about">
+            <h2><i> Nous mettons votre beauté et votre bien-être au cœur de nos priorités</i></h2>
+            <div class="about-grid">
+                <div class="about-card">
+                    <h3>Savoir-faire</h3>
+                    <p>Choisir notre salon de beauté , c'est faire confiance à une équipe professionnelle qualifiée, passionnée et attentive à vos besoins.</p>
+                </div>
+                <div class="about-card">
+                    <h3>Produits de Qualité</h3>
+                    <p>Nous utilisons des produits haut de gammes  adaptés à vos besoins afin de garantir des résultats durables tout en respectant la santé de votre peau et de vos cheveux.</p>
+                </div>
+                <div class="about-card">
+                    <h3>Ambiance Chaleureuse</h3>
+                    <p>Nous vous accueillons dans un cadre élégant, confortable et apaisant, conçu pour vous offrir un véritable moment de détente</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+    
+        <p>&copy; - <i>YOUNIQUE</i> -  <b>Tous droits réservés.</b></p>
+        
+    </footer>
+
+    <script src="./main.js"></script>
+        
+    <script>
+        
+        window.onload = function() {
+            verifierSession(''); // Chaîne vide car index.html est à la racine, pas dans /content
+            let user = localStorage.getItem('connectedUser');
+if(user) {
+    document.getElementById('welcome-hero').innerText = "Ravi de vous revoir chez nous, " + user + " !";
+}
+        };
+    </script>
+</body>
+    </script>
+</body>
+</html>

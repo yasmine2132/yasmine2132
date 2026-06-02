@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prendre rendez-vous - YOUNIQUE</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="../index.html" class="logo-text">-<i>YOUNIQUE</i>-</a>
+            
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Accueil</a></li>
+                <li><a href="./prestation.html">Prestations</a></li>
+                <li><a href="./reservation.html" class="active">Réservation</a></li>
+                <li><a href="./connexion.html" id="nav-auth">Connexion</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="form-box">
+            <h2>Prendre un Rendez-vous</h2>
+            <p id="reservation-msg" class="info-msg">Veuillez vous connecter pour enregistrer votre réservation à votre nom.</p>
+            
+            <form id="form-reservation" onsubmit="validerReservation(event)">
+                <div class="form-group">
+                    <label for="res-nom">Nom complet :</label>
+                    <input type="text" id="res-nom" required placeholder="Votre nom et prénom">
+                </div>
+
+                <div class="form-group">
+                    <label for="res-tel">Numéro de téléphone (Algérie) :</label>
+                    <input type="tel" id="res-tel" required placeholder="+213">
+                    <small class="error-text" id="tel-error"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="res-service">Choisir la prestation :</label>
+                    <select id="res-service" required>
+                        <option value="">-- Sélectionnez un service --</option>
+                        
+                        <optgroup label="Coiffure & Cheveux">
+                            <option value="Coupe & Brushing" > <image src="./images/brushing.jpg.png"/></image> coupe & Brushing - 2500 DA</option>
+                            <option value="Coloration Prestige">Coloration Prestige - 4500 DA</option>
+                            <option value="Lissage Protéine / Kératine">Lissage Protéine / Kératine - 12000 DA</option>
+                            <option value="Mèches & Balayage">Mèches & Balayage - 6500 DA</option>
+                            <option value="Soin Profond au Botox Capillaire">Soin Profond au Botox Capillaire - 8000 DA</option>
+                            <option value="Chignon de Mariée / Haute Coiffure">Chignon de Mariée - 10000 DA</option>
+                            <option value="Soin Anti-Chute aux Huiles Essentielles">Soin Anti-Chute - 4000 DA</option>
+                        </optgroup>
+
+                        <optgroup label="Soins du Visage & Corps">
+                            <option value="Soin Hydrafacial">Soin Hydrafacial - 6000 DA</option>
+                            <option value="Soin Visage Éclat">Soin Visage Éclat - 3500 DA</option>
+                            <option value="Extension de Cils (Cil à cil)">Extension de Cils - 5000 DA</option>
+                            <option value="Microblading Sourcils">Microblading Sourcils - 15000 DA</option>
+                            <option value="Peeling Doux aux Acides de Fruits">Peeling Doux - 5500 DA</option>
+                            <option value="Soin Visage Anti-Âge au Collagène">Soin Visage Anti-Âge - 7000 DA</option>
+                            <option value="Soin Purifiant Anti-Imperfections">Soin Purifiant - 4500 DA</option>
+                        </optgroup>
+
+                        <optgroup label="Onglerie">
+                            <option value="Manucure Russe">Manucure Russe - 3000 DA</option>
+                            <option value="Extension Gel / Faux Ongles">Extension Gel / Faux Ongles - 5500 DA</option>
+                            <option value="Beauté des Pieds Complète">Beauté des Pieds Complète - 3500 DA</option>
+                            <option value="Remplissage Gel">Remplissage Gel - 2800 DA</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="res-date">Date du rendez-vous :</label>
+                    <input type="date" id="res-date" required>
+                </div>
+
+                <button type="submit" class="btn btn-block">Confirmer le Rendez-vous</button>
+            </form>
+            
+            <div id="res-success" class="success-box" style="display:none;"></div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; -<i>YOUNIQUE </i>-  Tous droits réservés.</p>
+    </footer>
+
+    <script src="./main.js"></script>
+    <script>
+        window.onload = function() {
+            verifierSession('../');
+            
+            
+            let user = localStorage.getItem('connectedUser');
+            if(user) {
+                document.getElementById('res-nom').value = user;
+                document.getElementById('reservation-msg').innerText = "Ravi de vous revoir " + user + ", planifiez votre moment bien-être !";
+            }
+        };
+    </script>
+</body>
+</html>

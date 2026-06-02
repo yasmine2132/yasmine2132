@@ -1,0 +1,414 @@
+/*  VARIABLES DE COULEUR (Palette douce et adaptée à un salon de beauté) */
+:root {
+    --primary-color: #d4a373;    /* Doré / Beige chaud pour les boutons et accents */
+    --secondary-color: #faedcd;  /* Crème clair pour les messages d'information */
+    --dark-color: #333333;       /* Gris foncé pour un texte lisible */
+    --light-color: #efe8ba;      /* Fond de page très légèrement teinté (reposant) */
+    --white: #ffffff;            /* Blanc pur pour les cartes et blocs */
+    --error-color: #e63946;      /* Rouge pour les erreurs RegEx */
+    --success-color: #2a9d8f;    /* Vert pour les validations réussies */
+}
+
+/* RESET & STYLES DE BASE */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--light-color);
+    color: var(--dark-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Permet de pousser le footer en bas si la page est vide */
+}
+
+/* HEADER & EN-TÊTE DE NAVIGATION (Présent sur toutes les pages) */
+header {
+    background-color: var(--white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+header .logo h1 {
+    color: var(--primary-color);
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--dark-color);
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover, nav ul li a.active {
+    color: var(--primary-color);
+}
+
+/*  PAGE D'ACCUEIL : SECTION HERO & PRÉSENTATION */
+.hero {
+    /* Rappel oral : linear-gradient applique un voile sombre pour rendre le texte lisible */
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('./images/s.png') no-repeat center center/cover;
+    background-color: #d1959f; 
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color:beige;
+    padding: 0 30px;
+}
+
+.hero-text h2 {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.hero-text p {
+    font-size: 18px;
+    margin-bottom: 25px;
+    max-width: 600px;
+}
+
+/* Section "Pourquoi nous choisir" de l'accueil */
+.about {
+    padding: 30px 5%;
+    text-align: center;
+}
+
+.about h2 {
+    margin-bottom: 30px;
+}
+
+.about-grid {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap; /* Aligne verticalement sur mobile automatiquement */
+}
+
+.about-card {
+    background-color: var(--white);
+    padding: 25px;
+    border-radius: 8px;
+    flex: 1;
+    min-width: 250px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.about-card h3 {
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+/* BOUTONS GÉNÉRAUX */
+.btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 10px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background-color: #b88a5b;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.btn-danger {
+    background-color: var(--error-color);
+}
+.btn-danger:hover {
+    background-color: #c92a36;
+}
+
+/* PAGE PRESTATIONS : ZONE FILTRES & GRILLE DYNAMIQUE */
+.container {
+    padding: 40px 5%;
+    flex: 1;
+}
+
+.container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Zone des boutons de catégories */
+.filters {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.btn-filter {
+    background-color: var(--white);
+    border: 1px solid var(--primary-color);
+    color: var(--dark-color);
+    padding: 8px 18px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.btn-filter.active, .btn-filter:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+/* Grille responsive pour l'affichage dynamique des 18 prestations */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+/* Cartes injectées par JavaScript */
+.product-card {
+    background-color: var(--white);
+    border-radius: 8px;
+    overflow: hidden; /* Obligatoire pour couper les bords carrés de l'image */
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px); 
+}
+
+/* Gestion de l'image de la prestation */
+.product-img {
+    width: 100%;
+    height: 200px;       
+    object-fit: cover;   /* Recadre proprement la photo sans l'écraser */
+    border-bottom: 1px solid #f7f1f1;
+}
+
+.product-info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: space-between; 
+}
+
+.product-info h3 {
+    margin-bottom: 8px;
+    font-size: 18px;
+    color: var(--dark-color);
+}
+
+.product-info p {
+    font-size: 14px;
+    color: #666666;
+    line-height: 1.4;
+}
+
+.product-price {
+    font-size: 18px;
+    color: var(--primary-color);
+    font-weight: bold;
+    margin: 15px 0 5px 0;
+}
+
+/* FORMULAIRES (Connexion, Inscription & Réservation) */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-box {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 480px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #f2eaea;
+    border-radius: 4px;
+    font-size: 14px;
+    outline: none;
+}
+
+.form-group input:focus, .form-group select:focus {
+    border-color: var(--primary-color); /* Change la couleur de bordure au clic */
+}
+
+/* Style spécifique pour grouper les options dans le formulaire de réservation */
+select optgroup {
+    font-weight: bold;
+    color: rgb(182, 92, 92);
+    background-color: rgb(221, 202, 153);
+}
+
+select option {
+    color: rgb(38, 38, 34);
+    font-weight: normal;
+}
+
+.toggle-form {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.toggle-form a {
+    color: beige;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* BOITES DE NOTIFICATION ET MESSAGES D'ERREUR (Validation DOM) */
+.error-box {
+    background-color: #ebbec6;
+    color: var(--error-color);
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 15px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.success-box {
+    background-color: #d8f3dc;
+    color: var(--success-color);
+    padding: 15px;
+    border-radius: 4px;
+    margin-top: 15px;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.error-text {
+    color: var(--error-color);
+    font-size: 12px;
+    display: block;
+    margin-top: 4px;
+    font-weight: 600;
+}
+
+.info-msg {
+    background-color: var(--secondary-color);
+    padding: 12px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    text-align: center;
+    color: #7a5c3e;
+    border-left: 4px solid var(--primary-color);
+}
+
+/* FOOTER (Pied de page) */
+footer {
+    background-color: var(--dark-color);
+    color: var(--white);
+    text-align: center;
+    padding: 20px;
+    margin-top: auto; 
+    font-size: 14px;
+}
+/* Style du logo textuel */
+.logo-text {
+    font-size: 28px;            
+    font-weight: 800;            
+    letter-spacing: 4px;          
+    text-transform: uppercase;   
+    color: rgb(124, 81, 81);  
+    text-decoration: none;        
+    transition: all 0.3s ease;    
+    display: inline-block;
+}
+
+/* Effet interactif quand on passe la souris sur le logo */
+.logo-text:hover {
+    color: var(--dark-color);     
+    transform: translateY(-1px);  
+}
+
+/* MEDIA QUERIES (Responsive Design pour Tablettes et Mobiles) */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column; 
+        gap: 15px;
+        text-align: center;
+    }
+
+    nav ul {
+        width: 100%;
+        justify-content: center;
+    }
+
+    nav ul li {
+        margin: 0 10px;
+    }
+
+    .hero-text h2 {
+        font-size: 28px;
+    }
+
+    .hero-text p {
+        font-size: 15px;
+    }
+
+    .about-grid {
+        flex-direction: column; /* Les 3 cartes d'accueil s'empilent verticalement */
+    }
+    
+    .filters {
+        gap: 5px;
+    }
+    
+    .btn-filter {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+}
