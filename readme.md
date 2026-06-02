@@ -1,5 +1,5 @@
 
-PROJET WEB : SALON DE BEAUTÉ "THE HOUSE OF BEAUTY"
+PROJET WEB : SALON DE BEAUTÉ 
 
 Module : Développement d'Applications Web (2025/2026)
 Université Mouloud MAMMERI de Tizi-Ouzou (UMMTO)
