@@ -273,7 +273,7 @@ nav ul li a:hover, nav ul li a.active {
 .form-group input, .form-group select {
     width: 100%;
     padding: 10px;
-    border: 1px solid #f2eaea;
+    border: 1px solid #f5d0808;
     border-radius: 4px;
     font-size: 14px;
     outline: none;
@@ -302,7 +302,7 @@ select option {
 }
 
 .toggle-form a {
-    color: beige;
+    color: rgb(98,10,19);
     text-decoration: none;
     font-weight: bold;
 }
